@@ -1,361 +1,414 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-	<title>Speed Matters Presentation</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=792, user-scalable=no">
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
+    <title>Speed Matters Presentation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=792, user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="shower/themes/ribbon/styles/screen.css">
 </head>
 <body class="list">
-	<header class="caption">
-		<h1>Speed Matters</h1>
-		<p></p>
-	</header>
-	<section class="slide cover" id="Cover"><div>
-		<h2>Performance</h2>
-		<img src="pictures/cover.jpg" alt="">
-		<!--
-			To apply styles to the certain slides
-			set slide ID to get needed elements
-			-->
-		<style>
-			#Cover h2 {
-				margin:30px 0 0;
-				color:#FFF;
-				text-align:center;
-				font-size:70px;
-				}
-			#Cover p {
-				margin:10px 0 0;
-				text-align:center;
-				color:#FFF;
-				font-style:italic;
-				font-size:20px;
-				}
-				#Cover p a {
-					color:#FFF;
-					}
-			h3 {
-				font: 700 40px/1 'PT Sans Narrow',sans-serif;
-			}
+    <header class="caption">
+        <h1>Speed Matters</h1>
+        <p></p>
+    </header>
+    <section class="slide cover" id="Cover"><div>
+        <h2>Performance</h2>
+        <img src="pictures/cover.jpg" alt="">
+        <!--
+            To apply styles to the certain slides
+            set slide ID to get needed elements
+            -->
+        <style>
+            #Cover h2 {
+                margin:30px 0 0;
+                color:#FFF;
+                text-align:center;
+                font-size:70px;
+                }
+            #Cover p {
+                margin:10px 0 0;
+                text-align:center;
+                color:#FFF;
+                font-style:italic;
+                font-size:20px;
+                }
+                #Cover p a {
+                    color:#FFF;
+                    }
+            h3 {
+                font: 700 40px/1 'PT Sans Narrow',sans-serif;
+            }
 
-			dt {font-style: italic; font-weight: bold;}
+            dt {font-style: italic; font-weight: bold;}
 
-			.slide pre code {line-height: 35px;}
-			.slide pre mark.parse-html {background: #70a2e3; color: #fff;}
-			.abs-heading {position: absolute; top:20px;}
+            .slide pre code {line-height: 35px;}
+            .slide pre mark.parse-html {background: #70a2e3; color: #fff;}
+            .slide pre mark.highlight   {background: none; color:#70a2e3;}
+            .abs-heading {position: absolute; top:20px;}
 
-			.tool-icon {display: inline-block; margin-right: 10px; width: 30px; height: 30px; border-radius: 5px;}
-			.tool-icon.parse {background: #70a2e3;}
-			.tool-icon.recalc-style{background: #8266cc;}
-			.tool-icon.paint {background: #71b363;}
-
-
-			.render-element {border:2px solid black;}
-		</style>
-	</div></section>
-	<section class="slide shout">
-		<h2>Why?</h2>
-	</section>
-	<section class="slide"><div>
-		<h2>Examples</h2>
-		<ul>
-			<li><a href="http://blog.gigaspaces.com/amazon-found-every-100ms-of-latency-cost-them-1-in-sales/" title="" target="_blank">Amazon: every 100ms of latency cost 1% in sales.</a></li>
-			<li><a href="http://glinden.blogspot.com/2006/11/marissa-mayer-at-web-20.html" title="" target="_blank">Google: half a second delay caused a 20% drop in traffic</a></li>
-			<li>Mozilla: speeding up the page by an average of 2.2 seconds. Conversions increased by 15.4%</li>
-		</ul>
-	</div></section>
-
-	<section class="slide"><div>
-		<style>
-			.progressbar {display: inline-block; width:200px; height:30px; border:2px solid black; vertical-align: -5px;}
-		</style>
-		<div class="asside">
-			<h2>Page Load stats</h2>
-			<ul>
-
-				<li>47% <div class="progressbar"><div class="progressbar-progress" style="width:47%; height: 100%; background:#D6B62A;"></div></div></li>
-				<li>80% <div class="progressbar"><div style="width:47%; height: 100%; "><div style="width:80%; height: 100%; background: #f0e;"></div></div></div></li>
-				<li>50% <div class="progressbar"><div style="width:47%; height: 100%; "><div style="width:80%; height: 100%;"><div style="width:50%; height: 100%;  background:red;"></div></div></div></div></li>
-			</ul>
-		</div>
-	</div></section>
-
-	<section class="slide"><div>
-		<style type="text/css">
-			.asside {
-				width: 50%;
-				float: left;
-			}
-		</style>
-		<h2></h2>
-		<div class="asside">
-			<h3>Page Load</h3>
-			<ul>
-				
-				<li>Network waterfall</li>
-				<li>Image assets</li>
-				<li>Non-blocking delivery</li>
-				<li>Critical path CSS</li>
-				<li>@font-face load</li>
-			</ul>
-		</div>
-		<div class="asside">
-			<h3>Runtime</h3>
-			<ul>
-				<li>Interaction</li>
-				<li>Transitions & animations</li>
-				<li>Scrolling</li>
-				<li>Memory leaks & GC</li>
-				<li>RequestAnimationFrame</li>
-			</ul>
-		</div>
-	</div></section>
-
-	<section class="slide shout"><div>
-			<h3>100ms Response Time</h3>
-			<h3>16ms Frame Time <span class="next">(1000ms/60f)</span></h3>
-		</ul>
-	</div></section>
-
-	<section class="slide"><div>
-		<h2>Step by step Page loading</h2>
-		<div class="asside">
-			<ul>
-				<li>DNS lookup</li>
-				<li>TCP(TLS) handshake</li>
-				<li>TCP slow start</li>
-				<li>HTTP request</li>
-				
-			</ul>
-		</div>
-		<div class="asside">
-			<ul>
-				<li>Parsing</li>
-				<li>DOM</li>
-				<li>Render Tree</li>
-				<li>Layout</li>
-				<li>Paint</li>
-			</ul>
-		</div>
-	</div></section>
-
-	<section class="slide"><div>
-		<h2>Latency of a single HTTP request</h2>
-		<table>
-			<tr>
-				<th></th>
-				<th>3G</th>
-			</tr>
-			<tr>
-				<th>Control plane</th>
-				<td>200-2500 ms</td>
-			</tr>
-			<tr>
-				<th>DNS lookup</th>
-				<td>200 ms</td>
-			</tr>
-			<tr>
-				<th>TCP handshake</th>
-				<td>200 ms</td>
-			</tr>
-			<tr>
-				<th>TLS handshake</th>
-				<td>200 ms</td>
-			</tr>
-			<tr>
-				<th>HTTP request</th>
-				<td>200 ms</td>
-			</tr>
-			<tr>
-				<th>Total latency</th>
-				<th>200-3500 ms</th>
-			</tr>
-		</table>
-	</div></section>
-
-	<section class="slide"><div>
-		<h2 class="abs-heading">Optimizations</h2>
-		<dl>
-			<dt>Reduce DNS lookups</dt>
-			<dd>Every hostname resolution requires a network roundtrip, imposing latency on the request and blocking the request while the lookup is in progress.</dd>
-
-			<dt>Make fewer HTTP requests</dt>
-			<dd>No request is faster than a request not made: eliminate unnecessary resources on your pages. </dd>
-
-		</dl>
-	</div></section>
-
-	<section class="slide"><div>
-		<h2 class="abs-heading">Optimizations</h2>
-		<dl>
-
-			<dt>Gzip assets</dt>
-			<dd>All text-based assets should be compressed with Gzip when transferred between the client and the server. On average, Gzip will reduce the file size by 60–80%, which makes it one of the simpler (configuration flag on the server) and high-benefit optimizations you can do. </dd>
-
-			<dt>Avoid HTTP redirects</dt>
-			<dd>HTTP redirects can be extremely costly, especially when they redirect the client to a different hostname, which results in additional DNS lookup, TCP connection latency, and so on. </dd>
-
-		</dl>
-	</div></section>
-
-	<section class="slide"><div>
-		<h2 class="abs-heading">Optimizations</h2>
-		<dl>
-
-			<dt>Concatenation</dt>
-			<dd>Multiple JavaScript or CSS files are combined into a single resource. </dd>
-
-			<dt>Spriting</dt>
-			<dd>Multiple images are combined into a larger, composite image.</dd>
-
-			<dt>base64</dt>
-			<dd>background-image: url("data:image/png;base64,iVBOR...rkJggg==");</dd>
-
-			<dt>Favicon</dt>
-			<dd>When you forget them, the browsers will still request them and your server will reply with a 404 Not Found page.<br>So keep in mind to always have a favicon</dd>
-		</dl>
-	</div></section>
-
-	<section class="slide shout"><div>
-		<h2>Images</h2>
-	</div></section>
-
-	<section class="slide "><div>
-		<h2>Images optimization</h2>
-		<ul>
-			<li>Using better compression algorithms to store the pixel information</li>
-			<li>Removing unneeded metadata that goes with the image file</li>
-			<li><a href="http://www.artlebedev.ru/tools/technogrette/img/jpeg-1/" title="" target="_blank">JPEG Optimization (RU)</a></li>
-			<li><a href="http://www.artlebedev.ru/tools/technogrette/img/png-1/" title="" target="_blank">PNG Optimization (RU)</a></li>
-		</ul>
-	</div></section>
-
-	<section class="slide "><div>
-		<h2>Default JPEG</h2>
-		<img src="pictures/defaultjpg.png">
-	</div></section>
-
-	<section class="slide "><div>
-		<h2>Progressive JPEG</h2>
-		<img src="pictures/progressivejpg.png">
-	</div></section>
+            .tool-icon {display: inline-block; margin-right: 10px; width: 30px; height: 30px; border-radius: 5px;}
+            .tool-icon.parse {background: #70a2e3;}
+            .tool-icon.recalc-style{background: #8266cc;}
+            .tool-icon.paint {background: #71b363;}
 
 
-	<!-- Parse HTML -->
-	<section class="slide"><div>
-		<pre>
-			<code>&lt;!DOCTYPE html&gt;</code>
-			<code>&lt;html&gt;</code>
-			<code>&lt;head&gt;</code>
-			<code>    &lt;title&gt;Shower&lt;/title&gt;</code>
-			<code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
-			<code>&lt;/head&gt;</code>
+            .render-element {border:2px solid black;}
+        </style>
+    </div></section>
+    <section class="slide shout">
+        <h2>Why?</h2>
+    </section>
+    <section class="slide"><div>
+        <h2>Examples</h2>
+        <ul>
+            <li><a href="http://blog.gigaspaces.com/amazon-found-every-100ms-of-latency-cost-them-1-in-sales/" title="" target="_blank">Amazon: every 100ms of latency cost 1% in sales.</a></li>
+            <li><a href="http://glinden.blogspot.com/2006/11/marissa-mayer-at-web-20.html" title="" target="_blank">Google: half a second delay caused a 20% drop in traffic</a></li>
+            <li>Mozilla: speeding up the page by an average of 2.2 seconds. Conversions increased by 15.4%</li>
+        </ul>
+    </div></section>
 
-			<code>&lt;body&gt;</code>
-			<code>	  &lt;section&gt;</code>
-			<code>		  &lt;h1&gt;Welcome&lt;/h1&gt;</code>
-			<code>		  &lt;img src="img.jpg"&gt;</code>
-			<code>		  &lt;p&gt;Some text&lt;/p&gt;</code>
-			<code>	  &lt;/section&gt;</code>
-			<code>&lt;/body&gt;</code>
-			<code>&lt;/html&gt;</code>
-		</pre>
-	</div></section>
-	<!-- Parse HTML -->
-	<section class="slide"><div>
-		<h2 class="abs-heading"><span class="tool-icon parse"></span>Parse HTML</h2>
-		<pre>
-			<code>&lt;!DOCTYPE html&gt;</code>
-			<code><mark class="parse-html">&lt;html&gt;</mark></code>
-			<code><mark class="parse-html">&lt;head&gt;</mark></code>
-			<code>    <mark class="parse-html">&lt;title&gt;</mark>Shower&lt;/title&gt;</code>
-			<code>    <mark class="parse-html">&lt;link</mark> rel="stylesheet" href="screen.css"&gt;</code>
-			<code>&lt;/head&gt;</code>
+    <section class="slide"><div>
+        <style>
+            .progressbar {display: inline-block; width:200px; height:30px; border:2px solid black; vertical-align: -5px;}
+        </style>
+        <div class="asside">
+            <h2>Page Load stats</h2>
+            <ul>
 
-			<code><mark class="parse-html">&lt;body&gt;</mark></code>
-			<code>	  <mark class="parse-html">&lt;section&gt;</mark></code>
-			<code>		  <mark class="parse-html">&lt;h1&gt;</mark>Welcome&lt;/h1&gt;</code>
-			<code>		  <mark class="parse-html">&lt;img</mark> src="img.jpg"&gt;</code>
-			<code>		  <mark class="parse-html">&lt;p&gt;</mark>Some text&lt;/p&gt;</code>
-			<code>	  &lt;/section&gt;</code>
-			<code>&lt;/body&gt;</code>
-			<code>&lt;/html&gt;</code>
-		</pre>
-	</div></section>
+                <li>47% <div class="progressbar"><div class="progressbar-progress" style="width:47%; height: 100%; background:#D6B62A;"></div></div></li>
+                <li>80% <div class="progressbar"><div style="width:47%; height: 100%; "><div style="width:80%; height: 100%; background: #f0e;"></div></div></div></li>
+                <li>50% <div class="progressbar"><div style="width:47%; height: 100%; "><div style="width:80%; height: 100%;"><div style="width:50%; height: 100%;  background:red;"></div></div></div></div></li>
+            </ul>
+        </div>
+    </div></section>
 
-	<section class="slide"><div>
-		<style type="text/css">
-			.big-icons-wrap {text-align: center; padding-top: 100px;}
-			.big-icon {display: inline-block; padding: 0 30px; border-radius: 10px; font-size: 100px; }
-			.dom {background: #70a2e3; color: #fff;}
-			.css {background: #6a9934; color: #fff;}
-			.render-tree {background: linear-gradient(to bottom, #70a2e3 0%,#6a9934 100%); color: #fff;}
-		</style>
-		<div class="big-icons-wrap">
-			<div class="big-icon dom">DOM</div>
-		</div>
-	</div></section>
+    <section class="slide"><div>
+        <style type="text/css">
+            .asside {
+                width: 50%;
+                float: left;
+            }
+        </style>
+        <h2></h2>
+        <div class="asside">
+            <h3>Page Load</h3>
+            <ul>
+                
+                <li>Network waterfall</li>
+                <li>Image assets</li>
+                <li>Non-blocking delivery</li>
+                <li>Critical path CSS</li>
+                <li>@font-face load</li>
+            </ul>
+        </div>
+        <div class="asside">
+            <h3>Runtime</h3>
+            <ul>
+                <li>Interaction</li>
+                <li>Transitions & animations</li>
+                <li>Scrolling</li>
+                <li>Memory leaks & GC</li>
+                <li>RequestAnimationFrame</li>
+            </ul>
+        </div>
+    </div></section>
 
-	<section class="slide"><div>
-		<h2 class="abs-heading next"><span class="tool-icon recalc-style"></span>Recalculate Styles</h2>
-		<div class="big-icons-wrap">
-			<div class="big-icon dom">DOM</div>
-			<div class="big-icon">+</div>
-			<div class="big-icon css">CSS</div>
-		</div>
-	</div></section>
+    <section class="slide shout"><div>
+            <h3>100ms Response Time</h3>
+            <h3>16ms Frame Time <span class="next">(1000ms/60f)</span></h3>
+        </ul>
+    </div></section>
 
-	<!-- Render tree -->
-	<section class="slide"><div>
-		<div class="big-icons-wrap">
-			<div class="big-icon render-tree">Render Tree</div>
-		</div>
-	</div></section>
+    <section class="slide"><div>
+        <h2>Step by step Page loading</h2>
+        <div class="asside">
+            <ul>
+                <li>DNS lookup</li>
+                <li>TCP(TLS) handshake</li>
+                <li>TCP slow start</li>
+                <li>HTTP request</li>
+                
+            </ul>
+        </div>
+        <div class="asside">
+            <ul>
+                <li>Parsing</li>
+                <li>DOM</li>
+                <li>Render Tree</li>
+                <li>Layout</li>
+                <li>Paint</li>
+            </ul>
+        </div>
+    </div></section>
 
-	<!-- Layout -->
-	<section class="slide"><div>
-		<h2 class="abs-heading next"><span class="tool-icon recalc-style"></span>Layout <a href="https://www.youtube.com/watch?v=ZTnIxIA5KGw&list=PL8A593D913AEB0B13" title="" target="_blank">Mozilla reflow</a></h2>
-		<div style="width:50%; margin:auto;">
-			<div class="render-element" style="padding: 30px 10px 10px;">&lt;html&gt; &lt;body&gt;
-				<div class="render-element" style="padding: 10px;">&lt;section&gt;
-					<div class="render-element">&lt;h1&gt;</div>
-					<div class="render-element" style="width: 150px; height: 200px; margin:20px;">&lt;img&gt;</div>
-				</div>
-			</div>
-		</div>
-	</div></section>
+    <section class="slide"><div>
+        <h2>Latency of a single HTTP request</h2>
+        <table>
+            <tr>
+                <th></th>
+                <th>3G</th>
+            </tr>
+            <tr>
+                <th>Control plane</th>
+                <td>200-2500 ms</td>
+            </tr>
+            <tr>
+                <th>DNS lookup</th>
+                <td>200 ms</td>
+            </tr>
+            <tr>
+                <th>TCP handshake</th>
+                <td>200 ms</td>
+            </tr>
+            <tr>
+                <th>TLS handshake</th>
+                <td>200 ms</td>
+            </tr>
+            <tr>
+                <th>HTTP request</th>
+                <td>200 ms</td>
+            </tr>
+            <tr>
+                <th>Total latency</th>
+                <th>200-3500 ms</th>
+            </tr>
+        </table>
+    </div></section>
 
-	<!-- Paint -->
-	<section class="slide"><div>
-		<h2 class="abs-heading next"><span class="tool-icon paint"></span>Paint</h2>
-		
-		<div style="width:50%; margin:auto;">
-			<div class="render-element" style="padding: 30px 10px 10px; background:#a8cae4;">&nbsp;
-				<div class="render-element" style="padding: 10px; background:#3f5a8b; border:0;">
-					<div class="render-element" style="color:#fff; border:0;">Welcome</div>
-					<div class="render-element" style="width: 150px; height: 200px; margin:20px; background: url(pictures/picture.jpg)">&nbsp;</div>
-				</div>
-			</div>
-		</div>
-	</div></section>
+    <section class="slide"><div>
+        <h2 class="abs-heading">Optimizations</h2>
+        <dl>
+            <dt>Reduce DNS lookups</dt>
+            <dd>Every hostname resolution requires a network roundtrip, imposing latency on the request and blocking the request while the lookup is in progress.</dd>
 
-	<!-- Paint animation -->
-	<section class="slide"><div>
-		<h2 class="abs-heading"><span class="tool-icon paint"></span>Paint</h2>
-		
-		<div style="width:50%; margin:auto;">
-			<div class="render-element" style="padding: 30px 10px 10px; background:#a8cae4;">&nbsp;
-				<div class="render-element" style="padding: 10px; background:#3f5a8b; border:0; position: relative;">
-					<div class="render-element" style="color:#fff; border:0;">Welcome</div>
-					<div class="render-element" style="width: 150px; height: 200px; margin:20px; background: url(pictures/picture.jpg); border-style:dashed; opacity: 0.5;">&nbsp;</div>
-					<div class="render-element" style="width: 150px; height: 200px; margin:20px; background: url(pictures/picture.jpg); position: absolute; left:180px; top:-80px;">&nbsp;</div>
-					<div class="render-element next" style="width: 320px; height: 340px; margin:20px; position: absolute; left: 10px; top:-80px; border-color: red;">&nbsp;</div>
-				</div>
-			</div>
-		</div>
-	</div></section>
+            <dt>Make fewer HTTP requests</dt>
+            <dd>No request is faster than a request not made: eliminate unnecessary resources on your pages. </dd>
+
+        </dl>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2 class="abs-heading">Optimizations</h2>
+        <dl>
+
+            <dt>Gzip assets</dt>
+            <dd>All text-based assets should be compressed with Gzip when transferred between the client and the server. On average, Gzip will reduce the file size by 60–80%, which makes it one of the simpler (configuration flag on the server) and high-benefit optimizations you can do. </dd>
+
+            <dt>Avoid HTTP redirects</dt>
+            <dd>HTTP redirects can be extremely costly, especially when they redirect the client to a different hostname, which results in additional DNS lookup, TCP connection latency, and so on. </dd>
+
+        </dl>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2 class="abs-heading">Optimizations</h2>
+        <dl>
+
+            <dt>Concatenation</dt>
+            <dd>Multiple JavaScript or CSS files are combined into a single resource. </dd>
+
+            <dt>Spriting</dt>
+            <dd>Multiple images are combined into a larger, composite image.</dd>
+
+            <dt>base64</dt>
+            <dd>background-image: url("data:image/png;base64,iVBOR...rkJggg==");</dd>
+
+            <dt>Favicon</dt>
+            <dd>When you forget them, the browsers will still request them and your server will reply with a 404 Not Found page.<br>So keep in mind to always have a favicon</dd>
+        </dl>
+    </div></section>
+
+    <section class="slide shout"><div>
+        <h2>Images</h2>
+    </div></section>
+
+    <section class="slide "><div>
+        <h2>Images optimization</h2>
+        <ul>
+            <li>Using better compression algorithms to store the pixel information</li>
+            <li>Removing unneeded metadata that goes with the image file</li>
+            <li><a href="http://www.artlebedev.ru/tools/technogrette/img/jpeg-1/" title="" target="_blank">JPEG Optimization (RU)</a></li>
+            <li><a href="http://www.artlebedev.ru/tools/technogrette/img/png-1/" title="" target="_blank">PNG Optimization (RU)</a></li>
+        </ul>
+    </div></section>
+
+    <section class="slide "><div>
+        <h2>Default JPEG</h2>
+        <img src="pictures/defaultjpg.png">
+    </div></section>
+
+    <section class="slide "><div>
+        <h2>Progressive JPEG</h2>
+        <img src="pictures/progressivejpg.png">
+    </div></section>
+
+
+    <!-- Parse HTML -->
+    <section class="slide"><div>
+        <pre>
+            <code>&lt;!DOCTYPE html&gt;</code>
+            <code>&lt;html&gt;</code>
+            <code>&lt;head&gt;</code>
+            <code>    &lt;title&gt;Shower&lt;/title&gt;</code>
+            <code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
+            <code>&lt;/head&gt;</code>
+
+            <code>&lt;body&gt;</code>
+            <code>    &lt;section&gt;</code>
+            <code>        &lt;h1&gt;Welcome&lt;/h1&gt;</code>
+            <code>        &lt;img src="img.jpg"&gt;</code>
+            <code>        &lt;p&gt;Some text&lt;/p&gt;</code>
+            <code>    &lt;/section&gt;</code>
+            <code>&lt;/body&gt;</code>
+            <code>&lt;/html&gt;</code>
+        </pre>
+    </div></section>
+    <!-- Parse HTML -->
+    <section class="slide"><div>
+        <h2 class="abs-heading"><span class="tool-icon parse"></span>Parse HTML</h2>
+        <pre>
+            <code>&lt;!DOCTYPE html&gt;</code>
+            <code><mark class="parse-html">&lt;html&gt;</mark></code>
+            <code><mark class="parse-html">&lt;head&gt;</mark></code>
+            <code>    <mark class="parse-html">&lt;title&gt;</mark>Shower&lt;/title&gt;</code>
+            <code>    <mark class="parse-html">&lt;link</mark> rel="stylesheet" href="screen.css"&gt;</code>
+            <code>&lt;/head&gt;</code>
+
+            <code><mark class="parse-html">&lt;body&gt;</mark></code>
+            <code>    <mark class="parse-html">&lt;section&gt;</mark></code>
+            <code>        <mark class="parse-html">&lt;h1&gt;</mark>Welcome&lt;/h1&gt;</code>
+            <code>        <mark class="parse-html">&lt;img</mark> src="img.jpg"&gt;</code>
+            <code>        <mark class="parse-html">&lt;p&gt;</mark>Some text&lt;/p&gt;</code>
+            <code>    &lt;/section&gt;</code>
+            <code>&lt;/body&gt;</code>
+            <code>&lt;/html&gt;</code>
+        </pre>
+    </div></section>
+
+    <section class="slide"><div>
+        <style type="text/css">
+            .big-icons-wrap {text-align: center; padding-top: 100px;}
+            .big-icon {display: inline-block; padding: 0 30px; border-radius: 10px; font-size: 100px; }
+            .dom {background: #70a2e3; color: #fff;}
+            .css {background: #6a9934; color: #fff;}
+            .render-tree {background: linear-gradient(to bottom, #70a2e3 0%,#6a9934 100%); color: #fff;}
+        </style>
+        <div class="big-icons-wrap">
+            <div class="big-icon dom">DOM</div>
+        </div>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2 class="abs-heading next"><span class="tool-icon recalc-style"></span>Recalculate Styles</h2>
+        <div class="big-icons-wrap">
+            <div class="big-icon dom">DOM</div>
+            <div class="big-icon">+</div>
+            <div class="big-icon css">CSS</div>
+        </div>
+    </div></section>
+
+    <!-- Render tree -->
+    <section class="slide"><div>
+        <div class="big-icons-wrap">
+            <div class="big-icon render-tree">Render Tree</div>
+        </div>
+    </div></section>
+
+    <!-- Layout -->
+    <section class="slide"><div>
+        <h2 class="abs-heading next"><span class="tool-icon recalc-style"></span>Layout <a href="https://www.youtube.com/watch?v=ZTnIxIA5KGw&list=PL8A593D913AEB0B13" title="" target="_blank">Mozilla reflow</a></h2>
+        <div style="width:50%; margin:auto;">
+            <div class="render-element" style="padding: 30px 10px 10px;">&lt;html&gt; &lt;body&gt;
+                <div class="render-element" style="padding: 10px;">&lt;section&gt;
+                    <div class="render-element">&lt;h1&gt;</div>
+                    <div class="render-element" style="width: 150px; height: 200px; margin:20px;">&lt;img&gt;</div>
+                </div>
+            </div>
+        </div>
+    </div></section>
+
+    <!-- Paint -->
+    <section class="slide"><div>
+        <h2 class="abs-heading next"><span class="tool-icon paint"></span>Paint</h2>
+        
+        <div style="width:50%; margin:auto;">
+            <div class="render-element" style="padding: 30px 10px 10px; background:#a8cae4;">&nbsp;
+                <div class="render-element" style="padding: 10px; background:#3f5a8b; border:0;">
+                    <div class="render-element" style="color:#fff; border:0;">Welcome</div>
+                    <div class="render-element" style="width: 150px; height: 200px; margin:20px; background: url(pictures/picture.jpg)">&nbsp;</div>
+                </div>
+            </div>
+        </div>
+    </div></section>
+
+    <!-- Paint animation -->
+    <section class="slide"><div>
+        <h2 class="abs-heading"><span class="tool-icon paint"></span>Paint</h2>
+        
+        <div style="width:50%; margin:auto;">
+            <div class="render-element" style="padding: 30px 10px 10px; background:#a8cae4;">&nbsp;
+                <div class="render-element" style="padding: 10px; background:#3f5a8b; border:0; position: relative;">
+                    <div class="render-element" style="color:#fff; border:0;">Welcome</div>
+                    <div class="render-element" style="width: 150px; height: 200px; margin:20px; background: url(pictures/picture.jpg); border-style:dashed; opacity: 0.5;">&nbsp;</div>
+                    <div class="render-element" style="width: 150px; height: 200px; margin:20px; background: url(pictures/picture.jpg); position: absolute; left:180px; top:-80px;">&nbsp;</div>
+                    <div class="render-element next" style="width: 320px; height: 340px; margin:20px; position: absolute; left: 10px; top:-80px; border-color: red;">&nbsp;</div>
+                </div>
+            </div>
+        </div>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>1680x1050 image decode time <mark class="next">~50ms</mark></h2>
+        <h2 class="next">1680x1050 -&gt; 128x128 resize time <mark class="next">~30ms</mark></h2>
+    </div></section>
+
+    <!-- Layout Thrashing -->
+    <section class="slide"><div>
+        <h2>Layout Thrashing</h2>
+        <pre>
+                <code><mark class="highlight">function</mark> layout (){</code>
+                <code>  <mark class="highlight">var</mark>container = document.getElementsByTagName('body');</code>
+                <code>  <mark class="highlight">var</mark>slides = document.querySelectorAll('section');</code>
+                <code> </code>
+                <code>  <mark class="highlight">for</mark> (var i=0, l=slides.length; i&lt;l; i++){</code>
+                <code>      slides[i].style.width = container[0].offsetWidth + 'px';</code>
+                <code>  }</code>
+                <code>}</code>
+        </pre>
+        <p class="next">Read -&gt; <mark>Write</mark> -&gt; Read -&gt; <mark>Write</mark> -&gt; Read -&gt; <mark>Write</mark> ...</p>
+    </div></section>
+
+    <!-- Layout Better -->
+    <section class="slide"><div>
+        <pre>
+                <code><mark class="highlight">function</mark> layout2 (){</code>
+                <code>  <mark class="highlight">var</mark>container = document.getElementsByTagName('body');</code>
+                <code>  <mark class="highlight">var</mark>slides = document.querySelectorAll('section');</code>
+                <code>  <mark class="highlight">var</mark><mark>width</mark> = container[0].offsetWidth;</code>
+                <code> </code>
+                <code>  <mark class="highlight">for</mark> (var i=0, l=slides.length; i&lt;l; i++){</code>
+                <code>      slides[i].style.width = <mark>width</mark> + 'px';</code>
+                <code>  }</code>
+                <code>}</code>
+        </pre>
+        <p class="next">Read -&gt; <mark>Write</mark> -&gt; <mark>Write</mark> -&gt; <mark>Write</mark> -&gt; <mark>Write</mark> ...</p>
+    </div></section>
+
+    <!-- Layers -->
+    <section class="slide shout"><div>
+        <h2>Layers</h2>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Throttle</h2>
+        <p>Once per every <strong>wait</strong> milliseconds</p>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Debounce</h2>
+        <p>Postpone its execution until after <strong>wait</strong> milliseconds have elapsed since the last time it was invoked</p>
+    </div></section>
 
 
 
@@ -363,144 +416,171 @@
 
 
 
+    <section class="slide"><div>
+
+    </div></section>
 
 
+    <section class="slide"><div>
+        <h2>Shower Key Features</h2>
+        <ol>
+            <li>Built on HTML, CSS and vanilla JavaScript</li>
+            <li>All modern browsers are supported</li>
+            <li>Slide themes are separated from engine</li>
+            <li>Fully keyboard accessible</li>
+            <li>Printable to PDF</li>
+        </ol>
+        <p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Plain Text on Your Slides</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.</p>
+    </div></section>
+    <section class="slide"><div>
+        <h2>All Kind of Lists</h2>
+        <ol>
+            <li>Simple lists are marked with bullets</li>
+            <li>Ordered lists begin with a number</li>
+            <li>You can even nest lists one inside another
+                <ul>
+                    <li>Or mix their types</li>
+                    <li>But do not go too far</li>
+                    <li>Otherwise audience will be bored</li>
+                </ul>
+            </li>
+            <li>Look, seven rows exactly!</li>
+        </ol>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Serious Citations</h2>
+        <figure>
+            <blockquote>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
+            </blockquote>
+            <figcaption>Marcus Tullius Cicero</figcaption>
+        </figure>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Code Samples</h2>
+        <pre>
+            <code>&lt;!DOCTYPE html&gt;</code>
+            <code>&lt;html lang="en"&gt;</code>
+            <code><mark>&lt;head&gt;</mark> <mark class="comment">&lt;!--Comment--&gt;</mark></code>
+            <code>    &lt;title&gt;Shower&lt;/title&gt;</code>
+            <code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
+            <code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
+            <code><mark>&lt;/head&gt;</mark></code>
+        </pre>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Even Tables</h2>
+        <table>
+        <tr>
+            <th scope="col">Locavore</th>
+            <th>Umami</th>
+            <th>Helvetica</th>
+            <th>Vegan</th>
+        </tr>
+        <tr>
+            <th scope="row">Fingerstache</th>
+            <td>Kale</td>
+            <td>Chips</td>
+            <td>Keytar</td>
+        </tr>
+        <tr>
+            <th scope="row">Sriracha</th>
+            <td>Gluten-free</td>
+            <td>Ennui</td>
+            <td>Keffiyeh</td>
+        </tr>
+        <tr>
+            <th scope="row">Thundercats</th>
+            <td>Jean</td>
+            <td>Shorts</td>
+            <td>Biodiesel</td>
+        </tr>
+        <tr>
+            <th scope="row">Terry</th>
+            <td>Richardson</td>
+            <td>Swag</td>
+            <td>Blog</td>
+        </tr>
+        </table>
+        <p>It’s good to have information organized.</p>
+    </div></section>
+    <section class="slide cover" id="Picture"><div>
+        <h2>Pictures</h2>
+        <img src="pictures/picture.jpg" alt="">
+        <style>
+            #Picture h2 {
+                color:#FFF;
+                }
+        </style>
+    </div></section>
+    <section class="slide shout"><div>
+        <h2>You can even shout this way</h2>
+    </div></section>
+    <section class="slide"><div>
+        <h2>Inner Navigation</h2>
+        <ol>
+            <li>Lets you reveal list items one by one</li>
+            <li class="next">To keep some key points</li>
+            <li class="next">In secret from audience</li>
+            <li class="next">But it will work only once</li>
+            <li class="next">Nobody wants to see the same joke twice</li>
+        </ol>
+    </div></section>
+    <section class="slide shout" id="SeeMore"><div>
+        <h2><img src="pictures/logo.svg" alt=""> <a href="https://github.com/shower/shower/">See more on GitHub</a></h2>
+        <style>
+            #Picture h2 {
+                color:#FFF;
+                }
+            #SeeMore h2 {
+                font-size:100px
+                }
+            #SeeMore img {
+                width:0.72em;
+                height:0.72em;
+                }
+        </style>
+    </div></section>
+    <p class="badge"><a href="https://github.com/shower/shower">Fork me on Github</a></p>
+    <!--
+        To hide progress bar from entire presentation
+        just remove “progress” element.
+        -->
+    <div class="progress"><div></div></div>
+    
+    <script>
 
+        function layout(){
+            var container = document.getElementsByTagName('body');
 
+            var slides = document.querySelectorAll('section');
 
+            for (var i=0, l=slides.length; i<l; i++){
+                slides[i].style.width = container[0].offsetWidth + 'px';
 
-	<section class="slide"><div>
-		<h2>Shower Key Features</h2>
-		<ol>
-			<li>Built on HTML, CSS and vanilla JavaScript</li>
-			<li>All modern browsers are supported</li>
-			<li>Slide themes are separated from engine</li>
-			<li>Fully keyboard accessible</li>
-			<li>Printable to PDF</li>
-		</ol>
-		<p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
-	</div></section>
-	<section class="slide"><div>
-		<h2>Plain Text on Your Slides</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.</p>
-	</div></section>
-	<section class="slide"><div>
-		<h2>All Kind of Lists</h2>
-		<ol>
-			<li>Simple lists are marked with bullets</li>
-			<li>Ordered lists begin with a number</li>
-			<li>You can even nest lists one inside another
-				<ul>
-					<li>Or mix their types</li>
-					<li>But do not go too far</li>
-					<li>Otherwise audience will be bored</li>
-				</ul>
-			</li>
-			<li>Look, seven rows exactly!</li>
-		</ol>
-	</div></section>
-	<section class="slide"><div>
-		<h2>Serious Citations</h2>
-		<figure>
-			<blockquote>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-			</blockquote>
-			<figcaption>Marcus Tullius Cicero</figcaption>
-		</figure>
-	</div></section>
-	<section class="slide"><div>
-		<h2>Code Samples</h2>
-		<pre>
-			<code>&lt;!DOCTYPE html&gt;</code>
-			<code>&lt;html lang="en"&gt;</code>
-			<code><mark>&lt;head&gt;</mark> <mark class="comment">&lt;!--Comment--&gt;</mark></code>
-			<code>    &lt;title&gt;Shower&lt;/title&gt;</code>
-			<code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
-			<code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
-			<code><mark>&lt;/head&gt;</mark></code>
-		</pre>
-	</div></section>
-	<section class="slide"><div>
-		<h2>Even Tables</h2>
-		<table>
-		<tr>
-			<th scope="col">Locavore</th>
-			<th>Umami</th>
-			<th>Helvetica</th>
-			<th>Vegan</th>
-		</tr>
-		<tr>
-			<th scope="row">Fingerstache</th>
-			<td>Kale</td>
-			<td>Chips</td>
-			<td>Keytar</td>
-		</tr>
-		<tr>
-			<th scope="row">Sriracha</th>
-			<td>Gluten-free</td>
-			<td>Ennui</td>
-			<td>Keffiyeh</td>
-		</tr>
-		<tr>
-			<th scope="row">Thundercats</th>
-			<td>Jean</td>
-			<td>Shorts</td>
-			<td>Biodiesel</td>
-		</tr>
-		<tr>
-			<th scope="row">Terry</th>
-			<td>Richardson</td>
-			<td>Swag</td>
-			<td>Blog</td>
-		</tr>
-		</table>
-		<p>It’s good to have information organized.</p>
-	</div></section>
-	<section class="slide cover" id="Picture"><div>
-		<h2>Pictures</h2>
-		<img src="pictures/picture.jpg" alt="">
-		<style>
-			#Picture h2 {
-				color:#FFF;
-				}
-		</style>
-	</div></section>
-	<section class="slide shout"><div>
-		<h2>You can even shout this way</h2>
-	</div></section>
-	<section class="slide"><div>
-		<h2>Inner Navigation</h2>
-		<ol>
-			<li>Lets you reveal list items one by one</li>
-			<li class="next">To keep some key points</li>
-			<li class="next">In secret from audience</li>
-			<li class="next">But it will work only once</li>
-			<li class="next">Nobody wants to see the same joke twice</li>
-		</ol>
-	</div></section>
-	<section class="slide shout" id="SeeMore"><div>
-		<h2><img src="pictures/logo.svg" alt=""> <a href="https://github.com/shower/shower/">See more on GitHub</a></h2>
-		<style>
-			#Picture h2 {
-				color:#FFF;
-				}
-			#SeeMore h2 {
-				font-size:100px
-				}
-			#SeeMore img {
-				width:0.72em;
-				height:0.72em;
-				}
-		</style>
-	</div></section>
-	<p class="badge"><a href="https://github.com/shower/shower">Fork me on Github</a></p>
-	<!--
-		To hide progress bar from entire presentation
-		just remove “progress” element.
-		-->
-	<div class="progress"><div></div></div>
-	<script src="shower/shower.min.js"></script>
-	<!-- Copyright © 2013 Yours Truly, Famous Inc. -->
-	<!-- Photos by John Carey, fiftyfootshadows.net -->
+            }
+            console.log('relayout done');
+        }
+        function layout2(){
+            var container = document.getElementsByTagName('body');
+
+            var slides = document.querySelectorAll('section');
+            var width = container[0].offsetWidth;
+
+            for (var i=0, l=slides.length; i<l; i++){
+                slides[i].style.width = width + 'px';
+
+            }
+            console.log('relayout2 done');
+        }
+    </script>
+<script src="shower/shower.min.js"></script>
+
+    <!-- Copyright © 2013 Yours Truly, Famous Inc. -->
+    <!-- Photos by John Carey, fiftyfootshadows.net -->
 </body>
 </html>
