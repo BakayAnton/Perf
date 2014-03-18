@@ -48,6 +48,7 @@
             .abs-heading {position: absolute; top:20px;}
 
             .tool-icon {display: inline-block; margin-right: 10px; width: 30px; height: 30px; border-radius: 5px;}
+            .shout h2 .tool-icon {width:80px; height: 80px; margin-right: 20px;}
             .tool-icon.parse {background: #70a2e3;}
             .tool-icon.recalc-style{background: #8266cc;}
             .tool-icon.paint {background: #71b363;}
@@ -114,10 +115,20 @@
         </div>
     </div></section>
 
-    <section class="slide shout"><div>
-            <h3>100ms Response Time</h3>
-            <h3>16ms Frame Time <span class="next">(1000ms/60f)</span></h3>
-        </ul>
+    <section class="slide"><div>
+        <h2><a href="https://www.youtube.com/watch?v=e54Q1KXRmX0" title="" target="_blank">FPS comparison</a></h2>
+    </div></section>
+
+    <section class="slide"><div>
+        <div class="asside">
+            <h2>100ms </h2>
+            <h4>Response Time</h3>
+        </div>
+        <div class="asside">
+            <h2>16ms</h2>
+            <h4>Frame Time <span class="next">(1000ms/60f)</span></h3>
+        </div> 
+            
     </div></section>
 
     <section class="slide"><div>
@@ -223,6 +234,12 @@
         <h2>Images</h2>
     </div></section>
 
+    <!-- Images decoding -->
+        <section class="slide"><div>
+            <h2>1680x1050 image decode time <mark class="next">~50ms</mark></h2>
+            <h2 class="next">1680x1050 -&gt; 128x128 resize time <mark class="next">~30ms</mark></h2>
+        </div></section>
+
     <section class="slide "><div>
         <h2>Images optimization</h2>
         <ul>
@@ -243,6 +260,10 @@
         <img src="pictures/progressivejpg.png">
     </div></section>
 
+    <!-- Devtools Events -->
+        <section class="slide cover"><div>
+            <img src="pictures/devtools-events.jpg">
+        </div></section>
 
     <!-- Parse HTML -->
     <section class="slide"><div>
@@ -316,6 +337,11 @@
     </div></section>
 
     <!-- Layout -->
+    <section class="slide shout"><div>
+        <h2><span class="tool-icon recalc-style"></span>Layout</h2>
+    </div></section>
+
+    <!-- Layout -->
     <section class="slide"><div>
         <h2 class="abs-heading next"><span class="tool-icon recalc-style"></span>Layout <a href="https://www.youtube.com/watch?v=ZTnIxIA5KGw&list=PL8A593D913AEB0B13" title="" target="_blank">Mozilla reflow</a></h2>
         <div style="width:50%; margin:auto;">
@@ -328,10 +354,55 @@
         </div>
     </div></section>
 
+    <!-- Layout Thrashing -->
+    <section class="slide"><div>
+        <h2>Layout Thrashing</h2>
+        <pre>
+                <code><mark class="highlight">function</mark> layout (){</code>
+                <code>  <mark class="highlight">var</mark>container = document.getElementsByTagName('body');</code>
+                <code>  <mark class="highlight">var</mark>slides = document.querySelectorAll('section');</code>
+                <code> </code>
+                <code>  <mark class="highlight">for</mark> (var i=0, l=slides.length; i&lt;l; i++){</code>
+                <code>      slides[i].style.width = container[0].offsetWidth + 'px';</code>
+                <code>  }</code>
+                <code>}</code>
+        </pre>
+        <p class="next">Read -&gt; <mark>Write</mark> -&gt; Read -&gt; <mark>Write</mark> -&gt; Read -&gt; <mark>Write</mark> ...</p>
+    </div></section>
+
+    <!-- Layout Thrashing Image -->
+    <section class="slide cover"><div>
+        <img src="pictures/layoutthrashing.jpg" alt="">
+    </div></section>
+
+    <!-- Layout Better -->
+    <section class="slide"><div>
+        <pre>
+                <code><mark class="highlight">function</mark> layout2 (){</code>
+                <code>  <mark class="highlight">var</mark>container = document.getElementsByTagName('body');</code>
+                <code>  <mark class="highlight">var</mark>slides = document.querySelectorAll('section');</code>
+                <code>  <mark class="highlight">var</mark><mark>width</mark> = container[0].offsetWidth;</code>
+                <code> </code>
+                <code>  <mark class="highlight">for</mark> (var i=0, l=slides.length; i&lt;l; i++){</code>
+                <code>      slides[i].style.width = <mark>width</mark> + 'px';</code>
+                <code>  }</code>
+                <code>}</code>
+        </pre>
+        <p class="next">Read -&gt; <mark>Write</mark> -&gt; <mark>Write</mark> -&gt; <mark>Write</mark> -&gt; <mark>Write</mark> ...</p>
+    </div></section>
+
+    <!-- Layout Better Image -->
+    <section class="slide cover"><div>
+        <img src="pictures/layoutbetter.jpg" alt="">
+    </div></section>
+
+    <!-- Paint -->
+    <section class="slide shout"><div>
+        <h2><span class="tool-icon paint"></span>Paint</h2>
+    </div></section>
+
     <!-- Paint -->
     <section class="slide"><div>
-        <h2 class="abs-heading next"><span class="tool-icon paint"></span>Paint</h2>
-        
         <div style="width:50%; margin:auto;">
             <div class="render-element" style="padding: 30px 10px 10px; background:#a8cae4;">&nbsp;
                 <div class="render-element" style="padding: 10px; background:#3f5a8b; border:0;">
@@ -358,56 +429,21 @@
         </div>
     </div></section>
 
-    <section class="slide"><div>
-        <h2>1680x1050 image decode time <mark class="next">~50ms</mark></h2>
-        <h2 class="next">1680x1050 -&gt; 128x128 resize time <mark class="next">~30ms</mark></h2>
-    </div></section>
-
-    <!-- Layout Thrashing -->
-    <section class="slide"><div>
-        <h2>Layout Thrashing</h2>
-        <pre>
-                <code><mark class="highlight">function</mark> layout (){</code>
-                <code>  <mark class="highlight">var</mark>container = document.getElementsByTagName('body');</code>
-                <code>  <mark class="highlight">var</mark>slides = document.querySelectorAll('section');</code>
-                <code> </code>
-                <code>  <mark class="highlight">for</mark> (var i=0, l=slides.length; i&lt;l; i++){</code>
-                <code>      slides[i].style.width = container[0].offsetWidth + 'px';</code>
-                <code>  }</code>
-                <code>}</code>
-        </pre>
-        <p class="next">Read -&gt; <mark>Write</mark> -&gt; Read -&gt; <mark>Write</mark> -&gt; Read -&gt; <mark>Write</mark> ...</p>
-    </div></section>
-
-    <!-- Layout Better -->
-    <section class="slide"><div>
-        <pre>
-                <code><mark class="highlight">function</mark> layout2 (){</code>
-                <code>  <mark class="highlight">var</mark>container = document.getElementsByTagName('body');</code>
-                <code>  <mark class="highlight">var</mark>slides = document.querySelectorAll('section');</code>
-                <code>  <mark class="highlight">var</mark><mark>width</mark> = container[0].offsetWidth;</code>
-                <code> </code>
-                <code>  <mark class="highlight">for</mark> (var i=0, l=slides.length; i&lt;l; i++){</code>
-                <code>      slides[i].style.width = <mark>width</mark> + 'px';</code>
-                <code>  }</code>
-                <code>}</code>
-        </pre>
-        <p class="next">Read -&gt; <mark>Write</mark> -&gt; <mark>Write</mark> -&gt; <mark>Write</mark> -&gt; <mark>Write</mark> ...</p>
-    </div></section>
-
     <!-- Layers -->
     <section class="slide shout"><div>
         <h2>Layers</h2>
     </div></section>
 
     <section class="slide"><div>
-        <h2>Throttle</h2>
+        <h3>Throttle</h3>
         <p>Once per every <strong>wait</strong> milliseconds</p>
+
+        <h3>Debounce</h3>
+        <p>Postpone its execution until after <strong>wait</strong> milliseconds have elapsed since the last time it was invoked</p> 
     </div></section>
 
     <section class="slide"><div>
-        <h2>Debounce</h2>
-        <p>Postpone its execution until after <strong>wait</strong> milliseconds have elapsed since the last time it was invoked</p>
+        
     </div></section>
 
 
