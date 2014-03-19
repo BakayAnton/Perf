@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <title>Speed Matters Presentation</title>
+    <title>Page Speed Presentation</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=792, user-scalable=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -9,11 +9,11 @@
 </head>
 <body class="list">
     <header class="caption">
-        <h1>Speed Matters</h1>
+        <h1>Page Speed</h1>
         <p></p>
     </header>
     <section class="slide cover" id="Cover"><div>
-        <h2>Performance</h2>
+        <h2>Page Speed</h2>
         <img src="pictures/cover.jpg" alt="">
         <!--
             To apply styles to the certain slides
@@ -55,11 +55,18 @@
 
 
             .render-element {border:2px solid black;}
+
+            .asside {
+                width: 50%;
+                float: left;
+            }
         </style>
     </div></section>
-    <section class="slide shout">
-        <h2>Why?</h2>
-    </section>
+
+    <section class="slide"><div>
+        <h2><a href="http://bakayanton.github.io/Perf/">bakayanton.github.io/Perf</a></h2>
+    </div></section>
+
     <section class="slide"><div>
         <h2>Examples</h2>
         <ul>
@@ -83,52 +90,25 @@
             </ul>
         </div>
     </div></section>
-
-    <section class="slide"><div>
-        <style type="text/css">
-            .asside {
-                width: 50%;
-                float: left;
-            }
-        </style>
-        <h2></h2>
-        <div class="asside">
-            <h3>Page Load</h3>
-            <ul>
-                
-                <li>Network waterfall</li>
-                <li>Image assets</li>
-                <li>Non-blocking delivery</li>
-                <li>Critical path CSS</li>
-                <li>@font-face load</li>
-            </ul>
-        </div>
-        <div class="asside">
-            <h3>Runtime</h3>
-            <ul>
-                <li>Interaction</li>
-                <li>Transitions & animations</li>
-                <li>Scrolling</li>
-                <li>Memory leaks & GC</li>
-                <li>RequestAnimationFrame</li>
-            </ul>
-        </div>
-    </div></section>
-
-    <section class="slide"><div>
+    
+    <section class="slide shout"><div>
         <h2><a href="https://www.youtube.com/watch?v=e54Q1KXRmX0" title="" target="_blank">FPS comparison</a></h2>
     </div></section>
 
     <section class="slide"><div>
+
+        <h2></h2>
         <div class="asside">
-            <h2>100ms </h2>
-            <h4>Response Time</h3>
+            <h2>Page Load</h2>
+            <h3>3000 ms</h3>
+
         </div>
         <div class="asside">
-            <h2>16ms</h2>
-            <h4>Frame Time <span class="next">(1000ms/60f)</span></h3>
-        </div> 
+            <h2>Runtime</h2>
+            <h3>Frame 16ms (60fps)</h3>
+            <h3 class="next">Response 100ms</h3>
             
+        </div>
     </div></section>
 
     <section class="slide"><div>
@@ -434,6 +414,51 @@
         <h2>Layers</h2>
     </div></section>
 
+    <!-- Paint animation -->
+    <style>
+            @-webkit-keyframes rotateY {
+                0% {-webkit-transform: rotateY(0);}
+                50% {-webkit-transform: rotateY(80deg) rotateX(40deg);}
+                75% {-webkit-transform: rotateY(-80deg);}
+                100% {-webkit-transform: rotateY(0deg) rotateX(0);}
+            }
+            .render-element--animated {
+                -webkit-perspective: 900px; 
+                -webkit-transform: rotateY(0); 
+                -webkit-transform-style: preserve-3d;
+                -webkit-animation: rotateY 6s infinite 0s ;
+            }
+            .render-element-transated {
+                -webkit-transform: translate3d(0, 0, 60px);
+            }
+
+
+    </style>
+
+    <section class="slide"><div>   
+             
+        <div style="width:50%; margin:auto;">
+            <div class="render-element render-element--animated" style="padding: 30px 10px 10px; background:#a8cae4;">&nbsp;
+                <div class="render-element" style="padding: 10px; background:#3f5a8b; border:0; position: relative;">
+                    <div class="render-element" style="color:#fff; border:0;">Welcome</div>
+                    <div class="render-element" style="width: 150px; height: 200px; margin:20px; background: url(pictures/picture.jpg); border-style:dashed; opacity: 0.5;">&nbsp;</div>
+                    <div class="render-element render-element-transated" style="width: 150px; height: 200px; margin:20px; background: url(pictures/picture.jpg); position: absolute; left:180px; top:-80px;">&nbsp;</div>
+                </div>
+            </div>
+        </div>
+    </div></section>
+
+    <section class="slide"><div>
+        <h2>Layer Creation</h2>
+        <ul>
+            <li>Transform</li>
+            <li>HW-accelerated video element</li>
+            <li>HW-accelerated canvas element</li>
+            <li>contains a composited plugin</li>
+            <li>CSS animation on opacity</li>
+        </ul>
+    </div></section>
+
     <section class="slide"><div>
         <h3>Throttle</h3>
         <p>Once per every <strong>wait</strong> milliseconds</p>
@@ -442,150 +467,27 @@
         <p>Postpone its execution until after <strong>wait</strong> milliseconds have elapsed since the last time it was invoked</p> 
     </div></section>
 
-    <section class="slide"><div>
-        
-    </div></section>
-
-
-
-
-
-
-
-    <section class="slide"><div>
-
-    </div></section>
-
-
-    <section class="slide"><div>
-        <h2>Shower Key Features</h2>
-        <ol>
-            <li>Built on HTML, CSS and vanilla JavaScript</li>
-            <li>All modern browsers are supported</li>
-            <li>Slide themes are separated from engine</li>
-            <li>Fully keyboard accessible</li>
-            <li>Printable to PDF</li>
-        </ol>
-        <p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
-    </div></section>
-    <section class="slide"><div>
-        <h2>Plain Text on Your Slides</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.</p>
-    </div></section>
-    <section class="slide"><div>
-        <h2>All Kind of Lists</h2>
-        <ol>
-            <li>Simple lists are marked with bullets</li>
-            <li>Ordered lists begin with a number</li>
-            <li>You can even nest lists one inside another
-                <ul>
-                    <li>Or mix their types</li>
-                    <li>But do not go too far</li>
-                    <li>Otherwise audience will be bored</li>
-                </ul>
-            </li>
-            <li>Look, seven rows exactly!</li>
-        </ol>
-    </div></section>
-    <section class="slide"><div>
-        <h2>Serious Citations</h2>
-        <figure>
-            <blockquote>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-            </blockquote>
-            <figcaption>Marcus Tullius Cicero</figcaption>
-        </figure>
-    </div></section>
-    <section class="slide"><div>
-        <h2>Code Samples</h2>
-        <pre>
-            <code>&lt;!DOCTYPE html&gt;</code>
-            <code>&lt;html lang="en"&gt;</code>
-            <code><mark>&lt;head&gt;</mark> <mark class="comment">&lt;!--Comment--&gt;</mark></code>
-            <code>    &lt;title&gt;Shower&lt;/title&gt;</code>
-            <code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
-            <code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
-            <code><mark>&lt;/head&gt;</mark></code>
-        </pre>
-    </div></section>
-    <section class="slide"><div>
-        <h2>Even Tables</h2>
-        <table>
-        <tr>
-            <th scope="col">Locavore</th>
-            <th>Umami</th>
-            <th>Helvetica</th>
-            <th>Vegan</th>
-        </tr>
-        <tr>
-            <th scope="row">Fingerstache</th>
-            <td>Kale</td>
-            <td>Chips</td>
-            <td>Keytar</td>
-        </tr>
-        <tr>
-            <th scope="row">Sriracha</th>
-            <td>Gluten-free</td>
-            <td>Ennui</td>
-            <td>Keffiyeh</td>
-        </tr>
-        <tr>
-            <th scope="row">Thundercats</th>
-            <td>Jean</td>
-            <td>Shorts</td>
-            <td>Biodiesel</td>
-        </tr>
-        <tr>
-            <th scope="row">Terry</th>
-            <td>Richardson</td>
-            <td>Swag</td>
-            <td>Blog</td>
-        </tr>
-        </table>
-        <p>It’s good to have information organized.</p>
-    </div></section>
-    <section class="slide cover" id="Picture"><div>
-        <h2>Pictures</h2>
-        <img src="pictures/picture.jpg" alt="">
-        <style>
-            #Picture h2 {
-                color:#FFF;
-                }
-        </style>
-    </div></section>
     <section class="slide shout"><div>
-        <h2>You can even shout this way</h2>
+        <h2>Garbage collector</h2>
     </div></section>
+
     <section class="slide"><div>
-        <h2>Inner Navigation</h2>
-        <ol>
-            <li>Lets you reveal list items one by one</li>
-            <li class="next">To keep some key points</li>
-            <li class="next">In secret from audience</li>
-            <li class="next">But it will work only once</li>
-            <li class="next">Nobody wants to see the same joke twice</li>
-        </ol>
+        <img src="pictures/Memory.jpg">
+        <p class="next"><img src="pictures/Memory-GC.jpg"></p>
+        <p class="next"><img src="pictures/Memory-clear.jpg"></p>
+        <p class="next"><a href="https://developer.mozilla.org/ru/docs/JavaScript/Memory_Management">Memory Management (RU)</a></p>
     </div></section>
-    <section class="slide shout" id="SeeMore"><div>
-        <h2><img src="pictures/logo.svg" alt=""> <a href="https://github.com/shower/shower/">See more on GitHub</a></h2>
-        <style>
-            #Picture h2 {
-                color:#FFF;
-                }
-            #SeeMore h2 {
-                font-size:100px
-                }
-            #SeeMore img {
-                width:0.72em;
-                height:0.72em;
-                }
-        </style>
-    </div></section>
-    <p class="badge"><a href="https://github.com/shower/shower">Fork me on Github</a></p>
-    <!--
-        To hide progress bar from entire presentation
-        just remove “progress” element.
-        -->
+
+
+
+
+
+
+
+
+    
+
+
     <div class="progress"><div></div></div>
     
     <script>
